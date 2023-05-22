@@ -181,4 +181,58 @@ Situacion: La variable televisores, contiene una lista de televisores disponible
 
 
 
+# .splice()
+
+Se utiliza para modificar un array al agregar, eliminar o reemplazar elementos existentes. Puede realizar varias operaciones en el array en función de los argumentos que se le pasen.
+
+Sintaxis:
+
+            array.splice(indice, cantidad, elemento1, elemento2, elemento3)
+            // El índice en el que se desea realizar la operación. Indica la posición donde se va a empezar a realizar la                   modificación.
+            // La cantidad de elementos a eliminar desde el índice especificado. Si se omite, todos los elementos a partir del                    índice hasta el final del array serán eliminados.
+            // Elemento: Los elementos que se desean agregar al array en el índice especificado. Estos elementos se insertarán                en lugar de los elementos eliminados.
+
+Ejemplo 1: Eliminar elementos del arreglo
+
+        // Caso Numero 1, :
+        
+        let numeros = [1, 2, 3, 4, 5];
+        numeros.splice(2, 2);
+        console.log(numeros);
+        // Al llamar a .splice(2, 2), se eliminan dos elementos a partir del índice 2. El array resultante será [1, 2, 5].
+ 
+ 
+Ejemplo 2: Agregar elementos al arreglo
+        
+        let frutas = ['manzana', 'pera', 'naranja'];
+        frutas.splice(1, 0, 'plátano', 'uva');
+        console.log(frutas);
+        // El array resultante será ['manzana', 'plátano', 'uva', 'pera', 'naranja']
+        
+Ejempo 3: Reemplazar elementos del array
+
+        let colores = ['rojo', 'verde', 'azul'];
+        colores.splice(1, 1, 'amarillo', 'morado');
+        console.log(colores);
+        // El array resultante será ['rojo', 'amarillo', 'morado', 'azul'].
+        
+ 
+ Obs: El método modifica el arreglo original y puede tener un efecto directo en su longitud.
+ 
+Situacion: En una tienda de ropas, las camisas medianas ('M') y grandes ('L') están agotadas, de modo que se debe eliminar del arreglo. Pero las camisas 'XL' están disponibles nuevamente, por lo que se deben agregar otra vez al mismo.
+
+        let camisas = ['M', 'L', 'S'];
+        camisas.splice(0,2,'XL')
+
+        console.log(camisas)
+        // el resultado seria que la variable camisas contrendra ['XL','S']
+    
+        
+
+ 
+
+        
+
+
+
 
