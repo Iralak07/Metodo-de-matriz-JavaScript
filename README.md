@@ -64,8 +64,8 @@ Sintaxis:
 
 Ejemplo:
 
-    var frutas = ['manzana', 'plátano', 'naranja'];
-    var indiceManzana = frutas.indexOf('manzana');
+    let frutas = ['manzana', 'plátano', 'naranja'];
+    let indiceManzana = frutas.indexOf('manzana');
     // indiceManzana es 0
 
     var indicePera = frutas.indexOf('pera');
@@ -85,4 +85,58 @@ Dentro de la variable frutaFavorita, obtenemos el indice de nuestra fruta que de
 
 # findLastIndexOf()
 
-Se utiliza para encontrar el índice del último elemento en un array que cumple con una condición especificada. Retorna el índice del último elemento que satisface la condición de una función de prueba proporcionada, o -1 si no se encuentra ningún elemento que cumpla con la condición.
+Se utiliza para encontrar el índice del último elemento en un array que cumple con una condición especificada. Retorna el índice del último elemento que satisface la condición de una función de prueba proporcionada, o -1 si no se encuentra ningún elemento que cumpla con la condición. Es similar a indexOf, pero busca de forma inversa desde el final de un arreglo.
+
+Sintaxis:
+
+    array.lastIndexOf(elemento)
+
+Ejemplo: 
+
+        let colores = ['rojo', 'verde', 'azul', 'verde', 'amarillo'];
+        let ultimoIndiceVerde = colores.lastIndexOf('verde');
+        // ultimoIndiceVerde es 3
+
+        let ultimoIndiceBlanco = colores.lastIndexOf('blanco');
+        // ultimoIndiceBlanco es -1
+
+En este ejemplo, el array colores contiene cinco elementos: 'rojo', 'verde', 'azul', 'verde' y 'amarillo'. El método lastIndexOf() se utiliza para obtener el índice de la última aparición de 'verde' en el array. Como 'verde' se encuentra en el índice 3 (contando desde el final del array), la variable ultimoIndiceVerde es 3. Luego, se busca el índice de 'blanco', que no está presente en el array, por lo que la variable ultimoIndiceBlanco es -1.
+
+El método lastIndexOf() es útil cuando necesitas obtener la posición de la última aparición de un elemento específico en un array. Al buscar hacia atrás, puedes obtener la última instancia del elemento en lugar de la primera, como lo hace el método indexOf().
+
+Situacion: Al pagar en la caja del supermercado, 'leche' se escaneó accidentalmente dos veces. Buscaremos el índice de la segunda 'leche' escaneada accidentalmente usando .lastIndexOf().
+
+        let productos = ['leche', 'harina', 'gaseosa', 'leche', 'lechuga'];
+        let productoExtra = colores.lastIndexOf('leche');
+        // productoExtra es 3
+
+# .shift()
+
+Se utiliza para eliminar el primer elemento de un array. Desplaza todos los elementos restantes hacia una posición inferior y devuelve el elemento eliminado. Además, actualiza la longitud del array.
+
+Sintaxis:
+
+        array.shift()
+
+El método .shift() no requiere argumentos, ya que siempre elimina el primer elemento del array. Al eliminar el primer elemento, todos los demás elementos se desplazan hacia una posición inferior. La longitud del array se actualiza automáticamente después de la eliminación.
+
+Ejemplo:
+
+        let frutas = ['manzana', 'plátano', 'naranja'];
+        let primeraFruta = frutas.shift();
+        // primeraFruta es 'manzana', frutas ahora es ['plátano', 'naranja']
+
+Situacion: Utilizaremos el metodo .shift(), para eliminar el primer elemento de un arreglo, colocarlo en una variable e imprimirlo en consola. Se presenta un arreglo que contiene televisores con diferentes tamaño, ordenados de menor a mayor.
+
+        let televisores = ['32 pulgadas', '40 pulgadas', '50 pulgadas', '55 pulgadas'];
+        let primerTelevisor = televisores.shift();
+
+        console.log('El primer televisor eliminado es:', primerTelevisor);
+        // primerTelevisor es '32 pulgadas'
+        console.log('El arreglo actualizado de televisores es:', televisores);
+        // Lista actualizada de televisores ['40 pulgadas', '50 pulgadas', '55 pulgadas'];
+        
+
+
+
+
