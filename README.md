@@ -229,9 +229,38 @@ Situacion: En una tienda de ropas, las camisas medianas ('M') y grandes ('L') es
     
         
 
+ # .join()
  
-
+Se utiliza para crear una cadena de texto a partir de los elementos de un array. Concatena todos los elementos en el orden en que aparecen en el array y los separa mediante un separador especificado.
         
+Sintaxis:
+
+        array.join(separador)
+        
+Separador: el carácter o cadena que se utilizará como separador entre los elementos del array al concatenarlos en la cadena resultante. Si se omite, se utilizará una coma (',') como separador por defecto.
+
+Ejemplo:
+
+        let frutas = ['manzana', 'plátano', 'uva'];
+        let cadena = frutas.join(', ');
+
+        console.log(cadena);
+        // resultado seria: manzana, plátano, uva
+        
+Situacion: Tenemos un arreglo, con varios elementos, con el metodo .join() lo uniremos con el strign &.
+
+             let productos = [
+                  'Camisas',
+                   'Pantalones',
+                   'Calzados'
+                 ]
+
+              let cadena = productos.join(' & ')
+              console.log('En venta: ' + cadena)
+              // Resultado: "En venta: Camisas & Pantalones & Calzados"
+
+
+
 
 
 
