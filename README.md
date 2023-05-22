@@ -3,7 +3,7 @@ Los métodos de arrays en JavaScript son funciones predefinidas que se pueden ap
 
 A contiunacion, definiiremos cada uno de los metodos, sus sintaxis, ejemplos y una situacion en el que podriamos aplicarlo dentro de una aplicacion.
 
-# includes()
+# .includes()
 
 Se utiliza para verificar si un array contiene un determinado elemento y devuelve un valor booleano (true o false) según el resultado de la búsqueda.
 
@@ -54,7 +54,7 @@ Resultado:
     libros:true
 
 
-# indexOf()
+# .indexOf()
 
 Se utiliza para obtener el índice de la primera aparición de un elemento especificado en un array. Devuelve el índice del elemento si se encuentra en el array, y -1 si el elemento no está presente.
 
@@ -83,7 +83,7 @@ Utilizaremos el método indexOf para encontrar el número de indice de nuestra f
 Dentro de la variable frutaFavorita, obtenemos el indice de nuestra fruta que deseamos, primeramente verificamos si existe dentro de la lista, para posteriormente obtener su indice, en caso contrario nos arrojara una mensaje que no se encuentra en la lista;
 
 
-# findLastIndexOf()
+# .findLastIndexOf()
 
 Se utiliza para encontrar el índice del último elemento en un array que cumple con una condición especificada. Retorna el índice del último elemento que satisface la condición de una función de prueba proporcionada, o -1 si no se encuentra ningún elemento que cumpla con la condición. Es similar a indexOf, pero busca de forma inversa desde el final de un arreglo.
 
@@ -136,6 +136,48 @@ Situacion: Utilizaremos el metodo .shift(), para eliminar el primer elemento de 
         console.log('El arreglo actualizado de televisores es:', televisores);
         // Lista actualizada de televisores ['40 pulgadas', '50 pulgadas', '55 pulgadas'];
         
+# .unshift()
+
+Se utiliza para agregar uno o más elementos al inicio de un array. Desplaza todos los elementos existentes hacia una posición superior para hacer espacio para los nuevos elementos. Además, actualiza la longitud del array.
+
+Sintaxis:
+        
+        array.unshift(elemento1, elemento2, ..., elementoN)
+
+Ejemplo:
+
+        let frutas = ['plátano', 'naranja'];
+        frutas.unshift('manzana', 'uva');
+        // frutas ahora es ['manzana', 'uva', 'plátano', 'naranja']
+        
+Situacion: Utilizaremos el metodo .unshift(), para agregar a un arreglo de televisores ordenadas por tamaño un nuevo televisor en el que este es el mas pequeño en pulgadas.
+
+        let televisores = ['40 pulgadas', '50 pulgadas', '55 pulgadas'];
+        let nuevoTelevisor = '32 pulgadas';
+        televisores.unshift(nuevoTelevisor);
+
+        console.log('El arreglo actualizado de televisores es:', televisores);
+        // El resultado seria televisores ['32 pulgadas', 40 pulgadas', '50 pulgadas', '55 pulgadas'];
+
+# .reverse()
+
+Se utiliza para invertir el orden de los elementos en un array. El primer elemento se convierte en el último, el segundo en el penúltimo, y así sucesivamente. Este método modifica el array original y no devuelve un nuevo array.
+
+Sintaxis:
+        array.reverse()
+        
+Ejemplo:
+
+        let numeros = [1, 2, 3, 4, 5];
+        numeros.reverse();
+        console.log(numeros); // [5, 4, 3, 2, 1]
+        
+Situacion: La variable televisores, contiene una lista de televisores disponible en una tienda de Electronica, el mismo esta ordenado de por tamaño, de menor a moyor pulgadas, utilzaremos el metodo .reverse() para invertir el orden.
+
+        let televisores = ['32 pulgadas', '40 pulgadas', '50 pulgadas', '55 pulgadas'];
+        televisores.reverse()
+        
+        console.log(televisores) // ['55 pulgadas','50 pulgadas', '40 pulgadas', '32 pulgadas']
 
 
 
