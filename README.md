@@ -3,6 +3,136 @@ Los métodos de arrays en JavaScript son funciones predefinidas que se pueden ap
 
 A contiunacion, definiiremos cada uno de los metodos, sus sintaxis, ejemplos y una situacion en el que podriamos aplicarlo dentro de una aplicacion.
 
+
+#  push()
+
+El método push() se utiliza para agregar uno o más elementos al final de un array y devuelve la nueva longitud del array actualizado.
+
+Sintaxis:
+
+        array.push(elemento1, elemento2, ..., elementoN)
+
+Ejemplo:
+         let frutas = ['manzana', 'platano'];
+         let nuevaFrutas = frutas.push('naranja', 'mango');
+        // nuevaFrutas es 4, fruits ahora es ['manzana', 'platano', 'naranja', 'mango']
+        
+Situacion: Un cliente le solicita crear una tienda online de venta de articulos electronicos, donde los usuarios pueda ir seleccionado los articulos que desean, como hariamos para ir agregando los articulos seleccionado al carrito de compras?
+
+        let carrito = []
+        carrito.push('Televisor Samsug 40 pulgadas');
+        carrito.push('Celular Samsugn P7');
+        carrito.push('Microonda Midas');
+        console.log(carrito); // ['Televisor Samsug 40 pulgadas', 'Celular Samsugn P7', 'Microonda Midas'];
+        carrito.push('Plancha marca Midas');
+        console.log(carrito); // ['Televisor Samsug 40 pulgadas', 'Celular Samsugn P7', 'Microonda Midas', 'Plancha marca Midas'];
+
+# pop()
+
+La función pop() se utiliza para eliminar el último elemento de un array y devuelve el elemento eliminado. Además de eliminar el elemento, el tamaño (longitud) del array se reduce en 1.
+
+Sintaxis:
+
+    array.pop()
+
+Ejemplo:
+
+    let frutas = ['manzana', 'plátano', 'naranja'];
+    let ultimaFruta = frutas.pop();
+    // ultimaFruta es 'naranja', frutas ahora es ['manzana', 'plátano']
+
+Siempre que necesites eliminar y obtener el último elemento de un array, el método pop() es una opción útil y práctica.
+
+Situacion: Dentro de un arreglo se encuentran los productos agregados al carrito de compras de un cliente, el cliente desea cancelar el ultimo pedido.
+    
+    let carrito = ['mochila', 'pelota','zapatillas', 'televisor'];
+    let ultimoPedido = carrito.pop();
+    
+    console.log(carrito); // ['mochila', 'pelota','zapatillas'];
+    console.log(ultimoPedido); // 'televisor'
+
+# .concat()
+
+Se utiliza para combinar dos o más arrays y crear un nuevo array resultante de la concatenación. No modifica los arrays originales, sino que devuelve un nuevo array que contiene los elementos de los arrays combinados.
+
+Sintaxis:
+
+        array.concat(array1, array2)
+
+Ejemplo:
+
+        let arreglo1 = ['a', 'b', 'c'];
+        let arreglo2 = ['d', 'e', 'f'];
+        let nuevoArreglo = array1.concat(arreglo2);
+        // nuevoArreglo es ['a', 'b', 'c', 'd', 'e', 'f']
+
+Situacion:  En una tienda online, puedes tener diferentes arreglos de productos, como "productos nuevos", "productos en oferta", "productos más vendidos", etc. Al utilizar .concat(), puedes combinar estos arreglos en uno solo para mostrar una lista de productos completa que incluya todos los tipos de productos.
+
+        let televisores = ['Tv Samsung', 'Tv Tokio']
+        let celulares = ['Celular Samsung P5', 'Iphone 12']
+        
+        productosDisponibles = televisores.concat(celulares);
+        console.log(productosDisponibles); // [ 'Tv Samsung', 'Tv Tokio', 'Celular Samsung P5', 'Iphone 12' ]
+        
+# .find()
+
+Se utiliza para encontrar el primer elemento en un array que cumple con una condición especificada. Devuelve el valor del primer elemento que satisface la condición o undefined si ningún elemento cumple con la condición.
+
+Sintaxis:
+
+        arreglo.find(funcion(elemento, indice, arreglo) {
+             // Condición de búsqueda
+        });
+
+Ejemplo:
+
+            let frutas = [
+              { nombre: 'manzana', color: 'rojo' },
+              { nombre: 'plátano', color: 'amarillo' },
+              { nombre: 'naranja', color: 'naranja' }
+            ];
+
+            let frutaRoja = frutas.find(function(fruta) {
+              return fruta.color === 'rojo';
+            });
+            // frutaRoja es { nombre: 'manzana', color: 'rojo' }
+
+Situacion: Cuando un usuario agrega un artículo al carrito de compras en una tienda online, puedes utilizar .find() para verificar si el artículo ya existe en el carrito. Esto te permite evitar duplicados y realizar acciones específicas, como aumentar la cantidad del artículo existente en lugar de agregarlo nuevamente.
+
+            // Arreglo para almacenar los productos en el carrito de compras
+            let carrito = [];
+
+            // Función para agregar un artículo al carrito de compras
+            function agregarAlCarrito(articulo) {
+              // Verificar si el artículo ya existe en el carrito
+              let productoExistente = carrito.find(function(item) {
+                return item.id === articulo.id;
+              });
+
+              if (productoExistente) {
+                // Si el artículo ya existe, aumentar la cantidad en lugar de agregarlo nuevamente
+                productoExistente.cantidad++;
+                console.log('Se aumentó la cantidad del artículo en el carrito.');
+              } else {
+                // Si el artículo no existe, agregarlo al carrito
+                carrito.push(articulo);
+                console.log('El artículo se agregó al carrito.');
+              }
+            }
+
+            // Ejemplo de uso
+            let articulo1 = { id: 1, nombre: 'Camiseta', precio: 20, cantidad: 1 };
+            let articulo2 = { id: 2, nombre: 'Pantalón', precio: 30, cantidad: 1 };
+
+            agregarAlCarrito(articulo1); // El artículo se agregó al carrito.
+            agregarAlCarrito(articulo2); // El artículo se agregó al carrito.
+
+            agregarAlCarrito(articulo1); // Se aumentó la cantidad del artículo en el carrito.
+
+            console.log(carrito);
+            // Resultado: [{ id: 1, nombre: 'Camiseta', precio: 20, cantidad: 2 }, { id: 2, nombre: 'Pantalón', precio: 30, cantidad: 1 }]
+
+
 # .includes()
 
 Se utiliza para verificar si un array contiene un determinado elemento y devuelve un valor booleano (true o false) según el resultado de la búsqueda.
