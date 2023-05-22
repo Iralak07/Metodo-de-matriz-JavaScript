@@ -27,7 +27,7 @@ Situacion: Un cliente le solicita crear una tienda online de venta de articulos 
         carrito.push('Plancha marca Midas');
         console.log(carrito); // ['Televisor Samsug 40 pulgadas', 'Celular Samsugn P7', 'Microonda Midas', 'Plancha marca Midas'];
 
-# pop()
+# .pop()
 
 La función pop() se utiliza para eliminar el último elemento de un array y devuelve el elemento eliminado. Además de eliminar el elemento, el tamaño (longitud) del array se reduce en 1.
 
@@ -212,6 +212,100 @@ Utilizaremos el método indexOf para encontrar el número de indice de nuestra f
     
 Dentro de la variable frutaFavorita, obtenemos el indice de nuestra fruta que deseamos, primeramente verificamos si existe dentro de la lista, para posteriormente obtener su indice, en caso contrario nos arrojara una mensaje que no se encuentra en la lista;
 
+# .findIndex()
+
+Se utiliza para encontrar el índice del primer elemento en un array que cumple con una condición especificada. Devuelve el índice del primer elemento que satisface la condición o -1 si ningún elemento cumple con la condición.
+
+Sintaxis:
+                arreglo.findIndex(funcion(elemento, indice, arreglo) {
+                        // Condición de búsqueda
+                });
+Ejemplo:
+
+        let numeros = [10, 20, 30, 40, 50];
+
+        let indiceTreinta = numeros.findIndex(function(numero) {
+          return numero === 30;
+        });
+        // indiceTreinta es 2
+
+Situacion: Supongamos que tienes un array de productos en tu tienda online y quieres permitir a los usuarios eliminar un producto específico de su carrito de compras. Puedes utilizar el método .findIndex() para encontrar el índice del producto que desean eliminar y luego realizar la acción correspondiente.
+
+                // Array de productos en el carrito de compras
+                let carrito = [
+                  { id: 1, nombre: 'Camiseta', precio: 20 },
+                  { id: 2, nombre: 'Pantalón', precio: 30 },
+                  { id: 3, nombre: 'Zapatos', precio: 50 }
+                ];
+
+                // Función para eliminar un producto del carrito de compras
+                function eliminarDelCarrito(idProducto) {
+                  // Encontrar el índice del producto en el carrito
+                  let indiceProducto = carrito.findIndex(function(producto) {
+                    return producto.id === idProducto;
+                  });
+
+                  if (indiceProducto !== -1) {
+                    // Si se encontró el producto, eliminarlo del carrito
+                    carrito.splice(indiceProducto, 1);
+                    console.log('El producto se eliminó del carrito.');
+                  } else {
+                    console.log('El producto no se encontró en el carrito.');
+                  }
+                }
+
+                // Ejemplo de uso
+                eliminarDelCarrito(2); // El producto se eliminó del carrito.
+                eliminarDelCarrito(4); // El producto no se encontró en el carrito.
+
+                console.log(carrito);
+                // Resultado: [{ id: 1, nombre: 'Camiseta', precio: 20 }, { id: 3, nombre: 'Zapatos', precio: 50 }]
+
+
+# .filter()
+
+Se utiliza para crear un nuevo array que contiene todos los elementos de un array original que cumplen con una condición especificada. Retorna un nuevo array con los elementos filtrados sin modificar el array original.
+
+Sintaxis:
+
+        array.filter(funcion(elemento, indice, array) {
+          // Condición de filtrado
+        });
+        
+ Ejemplo:
+ 
+        let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let numerosPares = numeros.filter(function(numero) {
+          return numero % 2 === 0;
+        });
+        // numerosPares es [2, 4, 6, 8, 10]
+        
+ Situacion: Si quieres permitir a los usuarios establecer un rango de precios en tu tienda online y ver los productos que se ajustan a ese rango, puedes utilizar .filter() para filtrar los productos según su precio. Por ejemplo, puedes tener un array de productos con la propiedad de precio y utilizar .filter() para mostrar solo los productos que se encuentran dentro del rango de precios seleccionado.
+
+        // Array de productos
+        let productos = [
+          { nombre: 'Camiseta', precio: 20 },
+          { nombre: 'Pantalón', precio: 30 },
+          { nombre: 'Zapatos', precio: 50 },
+          { nombre: 'Bufanda', precio: 15 },
+          { nombre: 'Gorra', precio: 25 },
+          { nombre: 'Calcetines', precio: 10 }
+        ];
+
+        // Función para filtrar productos por rango de precios
+        function filtrarPorPrecio(minPrecio, maxPrecio) {
+          let productosFiltrados = productos.filter(function(producto) {
+            return producto.precio >= minPrecio && producto.precio <= maxPrecio;
+          });
+
+          return productosFiltrados;
+        }
+
+        // Ejemplo de uso
+        let productosEnRango = filtrarPorPrecio(20, 40);
+        console.log(productosEnRango);
+        // Resultado: [{ nombre: 'Camiseta', precio: 20 }, { nombre: 'Pantalón', precio: 30 }, { nombre: 'Gorra', precio: 25 }]
+
 
 # .findLastIndexOf()
 
@@ -357,7 +451,6 @@ Situacion: En una tienda de ropas, las camisas medianas ('M') y grandes ('L') es
         console.log(camisas)
         // el resultado seria que la variable camisas contrendra ['XL','S']
     
-        
 
  # .join()
  
@@ -388,6 +481,142 @@ Situacion: Tenemos un arreglo, con varios elementos, con el metodo .join() lo un
               let cadena = productos.join(' & ')
               console.log('En venta: ' + cadena)
               // Resultado: "En venta: Camisas & Pantalones & Calzados"
+
+
+# .reduce()
+
+Se utiliza para reducir los elementos de un array a un único valor. Itera sobre cada elemento del array y realiza una operación acumulativa en cada elemento, acumulando el resultado en un valor único.
+
+Sintaxis:
+
+                array.reduce(funcion(acumulador, elemento, indice, array), valorInicial);
+
+Ejemplo:
+
+                let numeros = [1, 2, 3, 4, 5];
+
+                let suma = numeros.reduce(function(acumulador, numero) {
+                  return acumulador + numero;
+                }, 0);
+                // suma es 15
+                
+Situacion: Puedes utilizar .reduce() para sumar el precio de todos los productos en un carrito de compras y obtener el total de la factura. Cada elemento del array sería un producto con su respectivo precio, y la función de reducción sumaría los precios de todos los productos.
+
+// Array de productos en el carrito de compras
+
+                let carrito = [
+                  { nombre: 'Camiseta', precio: 20 },
+                  { nombre: 'Pantalón', precio: 30 },
+                  { nombre: 'Zapatos', precio: 50 }
+                ];
+
+                // Calcular el total de la factura
+                let total = carrito.reduce(function(acumulador, producto) {
+                  return acumulador + producto.precio;
+                }, 0);
+
+                console.log('Total de la factura:', total);
+                // Resultado: Total de la factura: 100
+                
+ 
+# .map()
+
+Se utiliza para crear un nuevo array a partir de otro array existente, aplicando una función a cada elemento del array original.
+
+Sintaxis:
+
+        array.map(funcion(elemento, indice, array));
+        
+Ejemplo:
+
+        let numeros = [1, 2, 3, 4, 5];
+
+        let duplicados = numeros.map(function(numero) {
+          return numero * 2;
+        });
+        // duplicados es [2, 4, 6, 8, 10]
+
+Situacion: Si necesitas realizar cálculos o filtrar productos según sus precios, puedes utilizar .map() para obtener un array con los precios de todos los productos. Esto te permite tener un array separado con los valores necesarios para realizar operaciones específicas.
+
+        // Array de productos
+        let productos = [
+          { nombre: 'Camiseta', precio: 20 },
+          { nombre: 'Pantalón', precio: 30 },
+          { nombre: 'Zapatos', precio: 50 }
+        ];
+
+        // Obtener array con los precios de los productos
+        let precios = productos.map(function(producto) {
+          return producto.precio;
+        });
+
+        console.log('Precios de los productos:', precios);
+        // Resultado: Precios de los productos: [20, 30, 50]
+
+ 
+ # .every()
+ 
+Se utiliza para verificar si todos los elementos de un array cumplen una determinada condición. Retorna true si todos los elementos cumplen la condición y retorna false si al menos uno de los elementos no la cumple.
+
+Sintaxis:
+
+         array.every(funcion(elemento, indice, array));
+         
+El método .every() itera sobre cada elemento del array y ejecuta la función proporcionada en cada uno de ellos. Si en algún momento la función retorna false para un elemento, el método .every() se detiene y retorna false. Si la función retorna true para todos los elementos, entonces el método .every() retorna true.
+
+Ejemplo:
+
+        let numeros = [2, 4, 6, 8, 10];
+
+        let todosPares = numeros.every(function(numero) {
+          return numero % 2 === 0;
+        });
+        // todosPares es true
+
+       
+Situacion: Puedes utilizar .every() para verificar si todos los productos en una lista están disponibles en el inventario. Por ejemplo, puedes verificar si todos los productos seleccionados por un usuario tienen suficiente stock antes de permitir que se agreguen al carrito de compras.
+
+        // Array de productos seleccionados por el usuario
+        let productosSeleccionados = [
+          { nombre: 'Camiseta', stock: 5 },
+          { nombre: 'Pantalón', stock: 2 },
+          { nombre: 'Zapatos', stock: 10 }
+        ];
+
+        // Función para verificar la disponibilidad de stock de un producto
+        function verificarDisponibilidad(producto) {
+          return producto.stock > 0;
+        }
+
+        // Verificar si todos los productos seleccionados están disponibles
+        let todosDisponibles = productosSeleccionados.every(verificarDisponibilidad);
+
+        if (todosDisponibles) {
+          console.log('Todos los productos seleccionados están disponibles. Puedes agregarlos al carrito de compras.');
+        } else {
+          console.log('Algunos productos seleccionados no están disponibles en el inventario. Por favor, verifica el stock antes de                   agregarlos al carrito.');
+        }
+
+
+
+# .some()
+
+Se utiliza para verificar si al menos un elemento de un array cumple con una determinada condición. Retorna true si al menos uno de los elementos cumple la condición, y retorna false si ninguno de los elementos la cumple.
+
+Sintaxis:
+
+        array.some(funcion(elemento, indice, array));
+
+Ejemplo:
+
+        let numeros = [1, 3, 5, 7, 9];
+
+        let hayNumerosPares = numeros.some(function(numero) {
+          return numero % 2 === 0;
+        });
+        // hayNumerosPares es false
+
+
 
 
 
