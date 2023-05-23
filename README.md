@@ -12,7 +12,8 @@ El método push() se utiliza para agregar uno o más elementos al final de un ar
 Sintaxis:
 
         array.push(elemento1, elemento2, ..., elementoN)
-
+      
+        
 Ejemplo:
          let frutas = ['manzana', 'platano'];
          let nuevaFrutas = frutas.push('naranja', 'mango');
